@@ -38,7 +38,12 @@ rl.question("What's your name? ", (answer0) => {
       });
     });
   });
-
 });
 
-
+/* Note to self:
+Had rl.close() code between line 40 and 41 before. Doing this will exit the code.
+Therefore, the nested callbacks Line 16 onwards will not run. They will be placed in the Event Loop,
+awaiting to be run. But rl.close() method is run first. Therefore, the nested callbacks in the Event Loop
+do not get a chance to run AT ALL. To resolve this, place rl.close() method after printing
+the profile paragraph that incorporates user's answers. Anything you place BEFORE the rl.close()
+in its current position (after all the nested callbacks) will run. */
